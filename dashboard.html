@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GARENA DRAMA | Dashboard</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --red: #ff2638;
+  --dark: #09090d;
+  --card: #15151d;
+  --border: #30303b;
+}
+
+body {
+  margin: 0;
+  background: var(--dark);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 22px 15px;
+  text-align: center;
+  background: linear-gradient(135deg, #390008, #101016 75%);
+  border-bottom: 2px solid var(--red);
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--red);
+  letter-spacing: 1px;
+  text-shadow: 0 0 15px #ff263877;
+}
+
+.subtitle {
+  margin-top: 7px;
+  font-size: 12px;
+  color: #bbb;
+  letter-spacing: 3px;
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 16px;
+}
+
+.welcome {
+  margin-top: 15px;
+  padding: 22px;
+  border-radius: 16px;
+  background: linear-gradient(130deg, #291016, #15151d);
+  border: 1px solid #57202b;
+  box-shadow: 0 0 22px #ff26380c;
+}
+
+.welcome small {
+  color: #ff6b78;
+  letter-spacing: 2px;
+}
+
+.welcome h1 {
+  margin: 12px 0;
+  font-size: 27px;
+}
+
+.welcome p {
+  color: #aaa;
+  line-height: 1.6;
+}
+
+.badge {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #292027;
+  border: 1px solid #66303a;
+  color: #ff6573;
+  font-size: 12px;
+}
+
+.section-title {
+  margin: 28px 0 14px;
+  font-size: 19px;
+}
+
+.section-title span {
+  color: var(--red);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 17px;
+  border-radius: 12px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #999;
+}
+
+.stat-value {
+  margin-top: 9px;
+  font-size: 20px;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.red {
+  color: #ff4658;
+}
+
+.green {
+  color: #57f5a0;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.menu-card {
+  min-width: 0;
+  padding: 18px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-decoration: none;
+  color: white;
+  transition: transform .2s, border-color .2s;
+}
+
+.menu-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--red);
+}
+
+.icon {
+  font-size: 30px;
+}
+
+.menu-card h3 {
+  margin: 12px 0 7px;
+  font-size: 16px;
+}
+
+.menu-card p {
+  color: #999;
+  font-size: 12px;
+  line-height: 1.5;
+  min-height: 36px;
+}
+
+.open {
+  display: inline-block;
+  margin-top: 5px;
+  color: #ff5969;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.profile-box {
+  margin-top: 25px;
+  padding: 19px;
+  background: #111116;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.profile-box p {
+  color: #aaa;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  margin-top: 12px;
+  border: 1px solid #ff2638;
+  border-radius: 9px;
+  text-align: center;
+  color: white;
+  background: #b90f22;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-secondary {
+  background: #202027;
+  border-color: #454550;
+}
+
+.notice {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #17151b;
+  border-left: 3px solid #ffb52e;
+  color: #bbb;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+footer {
+  margin-top: 30px;
+  padding: 22px 10px;
+  text-align: center;
+  color: #777;
+  background: #0d0d11;
+  border-top: 1px solid #25252c;
+  font-size: 12px;
+}
+
+@media (max-width: 360px) {
+  .welcome h1 {
+    font-size: 23px;
+  }
+
+  .menu-card {
+    padding: 14px 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🔥 GARENA DRAMA</div>
+  <div class="subtitle">GAMING CONTROL CENTER</div>
+</header>
+
+<main class="container">
+
+  <section class="welcome">
+    <small>WELCOME BACK, PLAYER</small>
+
+    <h1>Ready to Dominate? 🎮</h1>
+
+    <p>
+      তোমার Gaming Zone-এ স্বাগতম!
+      Tournament, Gaming Store এবং Videos
+      এক জায়গা থেকেই ব্যবহার করো।
+    </p>
+
+    <span class="badge">● PLAYER DASHBOARD</span>
+  </section>
+
+  <h2 class="section-title">
+    PLAYER <span>STATUS</span>
+  </h2>
+
+  <section class="stats">
+
+    <div class="stat">
+      <div class="stat-label">👤 PLAYER NAME</div>
+      <div class="stat-value red" id="playerName">Player</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">🆔 FREE FIRE UID</div>
+      <div class="stat-value" id="playerUID">Not Set</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">💰 VIRTUAL CASH</div>
+      <div class="stat-value green" id="playerCash">৳0</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">🎮 GAMING STATUS</div>
+      <div class="stat-value red">ACTIVE</div>
+    </div>
+
+  </section>
+
+  <h2 class="section-title">
+    GAMING <span>ZONE</span>
+  </h2>
+
+  <section class="menu-grid">
+
+    <a class="menu-card" href="store.html">
+      <div class="icon">🛒</div>
+      <h3>Gaming Store</h3>
+      <p>Store ও Reward Zone ঘুরে দেখো।</p>
+      <span class="open">OPEN STORE ↗</span>
+    </a>
+
+    <a class="menu-card" href="tournament.html">
+      <div class="icon">🏆</div>
+      <h3>Tournament</h3>
+      <p>টুর্নামেন্ট রেজিস্ট্রেশন ও রুম তথ্য।</p>
+      <span class="open">ENTER ZONE ↗</span>
+    </a>
+
+    <a class="menu-card" href="videos.html">
+      <div class="icon">📺</div>
+      <h3>Gaming Videos</h3>
+      <p>GARENA DRAMA-এর ভিডিও দেখো।</p>
+      <span class="open">WATCH VIDEOS ↗</span>
+    </a>
+
+    <a class="menu-card" href="profile.html">
+      <div class="icon">👤</div>
+      <h3>My Profile</h3>
+      <p>তোমার UID ও Nickname আপডেট করো।</p>
+      <span class="open">VIEW PROFILE ↗</span>
+    </a>
+
+  </section>
+
+  <section class="profile-box">
+    <h2>⚙️ ACCOUNT SETTINGS</h2>
+
+    <p>
+      তোমার গেমিং প্রোফাইল পরিবর্তন করতে
+      নিচের বাটনে চাপ দাও।
+    </p>
+
+    <a href="profile.html" class="btn">✏️ EDIT PROFILE</a>
+
+    <a href="index.html" class="btn btn-secondary">
+      🏠 BACK TO HOME
+    </a>
+  </section>
+
+  <div class="notice">
+    ⚠️ <b>DEMO NOTICE:</b>
+    এই ওয়েবসাইটের Cash বর্তমানে ভার্চুয়াল।
+    এটি আসল টাকা বা Free Fire Diamonds নয়।
+  </div>
+
+</main>
+
+<footer>
+  <b>GARENA DRAMA</b><br><br>
+  Gaming • Tournaments • Videos<br>
+  © 2026 GARENA DRAMA
+</footer>
+
+<script>
+const nickname = localStorage.getItem("gd_nickname");
+const uid = localStorage.getItem("gd_uid");
+const cash = localStorage.getItem("gd_cash");
+
+document.getElementById("playerName").textContent =
+  nickname || "Player";
+
+document.getElementById("playerUID").textContent =
+  uid || "Not Set";
+
+document.getElementById("playerCash").textContent =
+  "৳" + (cash || "0");
+</script>
+
+</body>
+</html>

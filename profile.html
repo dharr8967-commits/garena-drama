@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garena Drama - Profile</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #080808;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 25px;
+            border: 2px solid red;
+            border-radius: 15px;
+            background: #151515;
+        }
+
+        h1 {
+            color: red;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0;
+            border: 1px solid #555;
+            border-radius: 7px;
+            background: #222;
+            color: white;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 12px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #ff5555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>MY PROFILE</h1>
+        <p>তোমার Free Fire তথ্য দাও 🎮</p>
+
+        <form id="profileForm">
+            <input
+                type="number"
+                id="uid"
+                placeholder="Free Fire UID"
+                required
+            >
+
+            <input
+                type="text"
+                id="nickname"
+                placeholder="Free Fire Nickname"
+                required
+            >
+
+            <button type="submit">Save Profile</button>
+        </form>
+
+        <a href="dashboard.html">Dashboard-এ ফিরে যাও</a>
+    </div>
+
+    <script>
+        const form = document.getElementById("profileForm");
+
+        document.getElementById("uid").value =
+            localStorage.getItem("gd_uid") || "";
+
+        document.getElementById("nickname").value =
+            localStorage.getItem("gd_nickname") || "";
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const uid = document.getElementById("uid").value.trim();
+            const nickname = document.getElementById("nickname").value.trim();
+
+            if (!uid || !nickname) {
+                alert("UID এবং Nickname দুটোই লিখতে হবে!");
+                return;
+            }
+
+            localStorage.setItem("gd_uid", uid);
+            localStorage.setItem("gd_nickname", nickname);
+
+            if (localStorage.getItem("gd_cash") === null) {
+                localStorage.setItem("gd_cash", "0");
+            }
+
+            alert("Profile saved! 🎉");
+            window.location.href = "dashboard.html";
+        });
+    </script>
+</body>
+</html>

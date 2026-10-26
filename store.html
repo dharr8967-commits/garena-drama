@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GARENA DRAMA | Gaming Store</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --purple: #b45cff;
+  --pink: #ff3f91;
+  --bg: #0a0712;
+  --card: #171222;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 25px 15px;
+  text-align: center;
+  background: linear-gradient(135deg, #34005c, #12091d);
+  border-bottom: 2px solid var(--purple);
+}
+
+header h1 {
+  margin: 0;
+  color: #e0aaff;
+  font-size: 28px;
+  text-shadow: 0 0 16px #b45cff88;
+}
+
+header p {
+  color: #c9b9d9;
+  font-size: 13px;
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 16px;
+}
+
+.balance {
+  padding: 22px;
+  margin-top: 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #4d1672, #1b102a);
+  border: 1px solid #9e52d5;
+  text-align: center;
+}
+
+.balance small {
+  color: #e1c4ff;
+  letter-spacing: 2px;
+}
+
+.balance h2 {
+  margin: 12px 0;
+  font-size: 34px;
+  color: #fff;
+}
+
+.section-title {
+  margin: 30px 0 15px;
+  color: var(--purple);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.card {
+  min-width: 0;
+  padding: 18px 13px;
+  background: var(--card);
+  border: 1px solid #39284b;
+  border-radius: 14px;
+  text-align: center;
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--purple);
+}
+
+.icon {
+  font-size: 38px;
+}
+
+.card h3 {
+  margin: 12px 0 8px;
+}
+
+.card p {
+  min-height: 36px;
+  color: #b9a9c9;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+button, .btn {
+  display: block;
+  width: 100%;
+  padding: 12px 8px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(90deg, #9239e6, #d13dba);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.secondary {
+  background: #26202f;
+  border: 1px solid #51405f;
+}
+
+.notice {
+  margin-top: 22px;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 3px solid #ffb735;
+  background: #211a13;
+  color: #d7c7b3;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+footer {
+  margin-top: 30px;
+  padding: 22px 10px;
+  text-align: center;
+  color: #82778c;
+  border-top: 1px solid #292033;
+  font-size: 12px;
+}
+
+@media (max-width: 350px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>💎 GARENA DRAMA</h1>
+  <p>PREMIUM GAMING STORE</p>
+</header>
+
+<main class="container">
+
+  <section class="balance">
+    <small>YOUR VIRTUAL BALANCE</small>
+    <h2 id="cash">৳0</h2>
+    <p>তোমার বর্তমান ভার্চুয়াল Cash</p>
+  </section>
+
+  <h2 class="section-title">💎 DIAMOND ZONE</h2>
+
+  <section class="grid">
+
+    <div class="card">
+      <div class="icon">💎</div>
+      <h3>Diamond Center</h3>
+      <p>Free Fire Diamonds সংক্রান্ত তথ্য।</p>
+      <button onclick="showInfo()">Explore</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎟️</div>
+      <h3>Membership</h3>
+      <p>Weekly ও Monthly Membership।</p>
+      <button onclick="showInfo()">Explore</button>
+    </div>
+
+  </section>
+
+  <h2 class="section-title">🎁 REWARD ZONE</h2>
+
+  <section class="grid">
+
+    <div class="card">
+      <div class="icon">🎯</div>
+      <h3>Daily Rewards</h3>
+      <p>ভবিষ্যতের Reward System-এর জন্য।</p>
+      <button onclick="showInfo()">Explore</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🏆</div>
+      <h3>Tournament Rewards</h3>
+      <p>টুর্নামেন্টের পুরস্কারের তথ্য।</p>
+      <a class="btn" href="tournament.html">Open</a>
+    </div>
+
+  </section>
+
+  <div class="notice">
+    ⚠️ <b>DEMO STORE:</b>
+    এটি বর্তমানে একটি ডিজাইন প্রোটোটাইপ।
+    এখানে আসল Diamonds কেনা, Cash জমা বা
+    পুরস্কার গ্রহণের ব্যবস্থা চালু নেই।
+    কোনো বাটন আসল Top-up সম্পন্ন করে না।
+  </div>
+
+  <a class="btn secondary" href="dashboard.html">
+    🎮 BACK TO DASHBOARD
+  </a>
+
+  <a class="btn secondary" href="index.html">
+    🏠 HOME PAGE
+  </a>
+
+</main>
+
+<footer>
+  © 2026 GARENA DRAMA<br>
+  GAMING • REWARDS • TOURNAMENTS
+</footer>
+
+<script>
+const cash = localStorage.getItem("gd_cash") || "0";
+document.getElementById("cash").textContent = "৳" + cash;
+
+function showInfo() {
+  alert("এই ফিচারটি এখনো তৈরি হচ্ছে! 🎮");
+}
+</script>
+
+</body>
+</html>

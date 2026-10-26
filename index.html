@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<title>GARENA DRAMA</title><style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050505;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* WELCOME INTRO */
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #050505;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+#intro.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.25),
+            rgba(0,0,0,.65) 65%,
+            #050505
+        ),
+        url("welcome-bg.png");
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.1);
+    animation: zoom 5s ease forwards;
+}
+
+@keyframes zoom {
+    from { transform: scale(1.1); }
+    to { transform: scale(1); }
+}
+
+.red-light {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle,
+        transparent 15%,
+        rgba(255,0,0,.12) 45%,
+        rgba(0,0,0,.65) 100%
+    );
+    animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+    from { opacity: .35; }
+    to { opacity: 1; }
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    animation: appear 1.2s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.crown {
+    color: #ff2525;
+    font-size: 45px;
+    text-shadow: 0 0 20px red;
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 8px red; }
+    to { text-shadow: 0 0 30px red, 0 0 45px #ff2020; }
+}
+
+h1 {
+    font-size: clamp(38px, 10vw, 70px);
+    font-weight: 1000;
+    line-height: 1;
+    text-shadow: 0 0 15px red, 0 0 35px #ff000077;
+    animation: glitch 2s infinite;
+}
+
+h1 span {
+    display: block;
+    color: #ff2929;
+}
+
+@keyframes glitch {
+    0%, 90%, 100% { transform: translateX(0); }
+    92% { transform: translateX(-3px); }
+    95% { transform: translateX(3px); }
+}
+
+.welcome {
+    margin-top: 20px;
+    font-size: 14px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 12px red;
+}
+
+.loading {
+    width: min(280px, 80%);
+    height: 8px;
+    margin: 25px auto 0;
+    padding: 2px;
+    border: 1px solid #ff2929;
+    border-radius: 20px;
+}
+
+#bar {
+    width: 0%;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #9b0000, red, white);
+    box-shadow: 0 0 12px red;
+    transition: width .1s linear;
+}
+
+#status {
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #ff7777;
+}
+
+/* LOGIN / SIGNUP SCREEN */
+#auth {
+    min-height: 100vh;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    background:
+        radial-gradient(ellipse at center, #351010, #090909 70%);
+}
+
+#auth.show {
+    display: flex;
+    animation: appear 1s ease;
+}
+
+.auth-logo {
+    color: #ff2929;
+    font-size: 34px;
+    font-weight: 900;
+    text-shadow: 0 0 18px red;
+}
+
+#auth p {
+    color: #ccc;
+    margin: 18px 0 28px;
+    line-height: 1.7;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
+
+.btn {
+    display: inline-block;
+    min-width: 145px;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    background: #ff2525;
+    border: 1px solid #ff2525;
+    border-radius: 7px;
+    box-shadow: 0 0 16px #ff252555;
+    transition: .25s;
+}
+
+.btn.secondary {
+    background: transparent;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px #ff252599;
+}
+
+footer {
+    margin-top: 45px;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+#error {
+    display: none;
+    margin-top: 20px;
+    max-width: 340px;
+    color: #ff7777;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+    .background {
+        background-position: center;
+    }
+
+    .welcome {
+        letter-spacing: 3px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+</style></head><body><!-- WELCOME INTRO --><section id="intro">
+    <div class="background"></div>
+    <div class="red-light"></div><div class="content">
+    <div class="crown">♛</div>
+
+    <h1>
+        GARENA
+        <span>DRAMA</span>
+    </h1>
+
+    <div class="welcome">WELCOME GAMER</div>
+
+    <div class="loading">
+        <div id="bar"></div>
+    </div>
+
+    <div id="status">INITIALIZING... 0%</div>
+</div>
+
+</section><!-- LOGIN / SIGNUP SCREEN --><section id="auth">
+    <div class="auth-logo">🔥 GARENA DRAMA</div><p>
+    YOUR GAMING WORLD STARTS HERE!<br>
+    Sign up or log in to continue.
+</p>
+
+<div class="buttons">
+    <a class="btn" href="signup.html">🚀 SIGN UP</a>
+    <a class="btn secondary" href="signup.html">🔐 LOGIN</a>
+</div>
+
+<div id="error" role="alert"></div>
+
+<footer>
+    © 2026 GARENA DRAMA<br>
+    Unofficial gaming fan website
+</footer>
+
+</section><script type="module">
+import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    setPersistence,
+    browserLocalPersistence
+} from
+    "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+
+/* FIREBASE CONFIGURATION */
+const firebaseConfig = {
+    apiKey: "AIzaSyBdXzmsQWAhu-16GioMYFRhZ7QfDQWRLs",
+    authDomain: "garena-drama.firebaseapp.com",
+    projectId: "garena-drama",
+    storageBucket: "garena-drama.firebasestorage.app",
+    messagingSenderId: "481915865901",
+    appId: "1:481915865901:web:1545167bc734c1320c61a4",
+    measurementId: "G-JKWL2W338L"
+};
+
+const intro = document.getElementById("intro");
+const authScreen = document.getElementById("auth");
+const bar = document.getElementById("bar");
+const statusText = document.getElementById("status");
+const errorBox = document.getElementById("error");
+
+let progress = 0;
+let sessionChecked = false;
+let userIsLoggedIn = false;
+
+const app = initializeApp(firebaseConfig);
+const firebaseAuth = getAuth(app);
+
+/* INTRO ANIMATION */
+const timer = setInterval(() => {
+    if (sessionChecked) return;
+
+    progress += 2;
+
+    if (progress >= 100) {
+        progress = 100;
+        clearInterval(timer);
+
+        bar.style.width = "100%";
+        statusText.textContent = "WELCOME GAMER!";
+
+        setTimeout(() => {
+            if (!sessionChecked) {
+                intro.classList.add("hide");
+                authScreen.classList.add("show");
+            }
+        }, 500);
+    } else {
+        bar.style.width = progress + "%";
+        statusText.textContent =
+            "INITIALIZING... " + progress + "%";
+    }
+}, 50);
+
+/* CHECK FIREBASE LOGIN SESSION */
+async function checkLoginSession() {
+    try {
+        await setPersistence(
+            firebaseAuth,
+            browserLocalPersistence
+        );
+
+        onAuthStateChanged(firebaseAuth, (user) => {
+            sessionChecked = true;
+
+            if (user) {
+                userIsLoggedIn = true;
+                clearInterval(timer);
+
+                statusText.textContent = "LOGIN VERIFIED...";
+
+                /* Already logged in: open dashboard */
+                window.location.replace("dashboard.html");
+            } else {
+                userIsLoggedIn = false;
+
+                /* Not logged in: show welcome screen */
+                intro.classList.add("hide");
+                authScreen.classList.add("show");
+            }
+        });
+    } catch (error) {
+        sessionChecked = true;
+
+        clearInterval(timer);
+
+        console.error("Firebase session error:", error);
+
+        intro.classList.add("hide");
+        authScreen.classList.add("show");
+
+        errorBox.style.display = "block";
+        errorBox.textContent =
+            "Could not verify your login session. " +
+            "Please check your internet connection and try again.";
+    }
+}
+
+checkLoginSession();
+</script></body>
+</html>
